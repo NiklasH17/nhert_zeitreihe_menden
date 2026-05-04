@@ -1,7 +1,7 @@
 
 ## Branches
 
-- Niemals direkt auf `main` pushen – immer einen eigenen Branch erstellen
+- Niemals direkt auf `main` pushen. Immer einen eigenen Branch erstellen
 - Branch-Namen beschreiben was man tut: `feature/login`, `fix/crash-on-start`
 - Branch nach dem Merge löschen
 
@@ -28,6 +28,6 @@ docs: README aktualisiert
 
 ## Sonstiges
 
-- Keine Passwörter oder Secrets ins Repo `.env`-Datei nutzen
+- Keine Passwörter ins Repo `.env`-Datei nutzen
 - Tests nicht vergessen
 - Bei Fragen einfach fragen 
