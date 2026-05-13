@@ -79,9 +79,9 @@ def lade_daten(pfad: str) -> dict:
 
 
 @st.cache_data
-def adf_test(serie_values, serie_index):
+def adf_test(serie_values, _serie_index):
     """ADF-Test – gibt Statistik, p-Wert und Ergebnis zurück."""
-    serie = pd.Series(serie_values, index=serie_index)
+    serie = pd.Series(serie_values, index=_serie_index)
     res = adfuller(serie.dropna(), autolag="AIC")
     return {
         "stat":   round(res[0], 4),
@@ -92,7 +92,7 @@ def adf_test(serie_values, serie_index):
 
 
 @st.cache_data
-def berechne_arima(serie_values, serie_index, p_max=3, q_max=3):
+def berechne_arima(serie_values, _serie_index, p_max=3, q_max=3):
     """
     Grid-Search ARIMA(p,1,q) – gibt bestes Modell + Ergebnistabelle zurück.
 
@@ -103,7 +103,7 @@ def berechne_arima(serie_values, serie_index, p_max=3, q_max=3):
     RMSE : Root Mean Squared Error          (niedriger = besser)
     MAE  : Mean Absolute Error              (niedriger = besser)
     """
-    serie = pd.Series(serie_values, index=serie_index)
+    serie = pd.Series(serie_values, index=_serie_index)
     log_s = np.log(serie)
     ergebnisse = []
 
@@ -137,9 +137,9 @@ def berechne_arima(serie_values, serie_index, p_max=3, q_max=3):
 
 
 @st.cache_data
-def berechne_prognose(serie_values, serie_index, p, q):
+def berechne_prognose(serie_values, _serie_index, p, q):
     """10-Wochen-Prognose mit 95%-Konfidenzintervall."""
-    serie  = pd.Series(serie_values, index=serie_index)
+    serie  = pd.Series(serie_values, index=_serie_index)
     log_s  = np.log(serie)
     fit    = ARIMA(log_s.dropna(), order=(p, 1, q)).fit()
     fc     = fit.get_forecast(steps=10)
@@ -506,7 +506,7 @@ with tab4:
     fig6.add_vline(x=daten["France"].index[-1],
                    line_dash="dot", line_color="gray", line_width=1)
     fig6.add_annotation(
-        x=daten["France"].index[-1], y=0,
+        x=daten["France"].index[-1],
         text="  Prognose →", showarrow=False,
         font=dict(color="gray", size=10), yref="paper", y=0.02
     )
