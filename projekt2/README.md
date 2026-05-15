@@ -56,7 +56,7 @@ Vier Prognosemodelle treten gegeneinander an – auf einem realistischen **8-Woc
 | **ARIMA**             | Univariat        | Autokorrelation der differenzierten Reihe    |
 | **VAR**               | Multivariat      | Gemeinsame Dynamik von Benzin, Diesel, Brent |
 | **State Space (UCM)** | Strukturell      | Zerlegung in Trend, Zyklus, Stoerung         |
-| **TimeGPT**           | Foundation Model | Zero-Shot Forecasting (Nixtla API)           |
+| **TimeGPT**           | Foundation Model | Zero-Shot Forecasting (Nixtla API) – siehe `src/TimeGPT.ipynb` |
 
 ### Ergebnis
 
@@ -91,6 +91,8 @@ Die ehrliche Antwort: **Es kommt darauf an.**
 Foundation Models sind nicht automatisch ueberlegen. Bei stabilen, gut verstandenen Zeitreihen – wie subventionierten Kraftstoffpreisen – koennen klassische Modelle gleichwertige Ergebnisse liefern, mit dem Vorteil vollstaendiger Interpretierbarkeit.
 
 **Wann lohnt sich AI-Forecasting?** Wenn man viele heterogene Zeitreihen schnell prognostizieren muss, ohne jede einzelne zu verstehen. Fuer tiefe Einzelanalysen bleiben klassische Modelle ueberlegen.
+
+> Eine detaillierte TimeGPT-Analyse mit Cross-Validation, Exogenous Variables, Fine-Tuning, Anomaly Detection und Uncertainty Quantification findet sich im separaten Notebook [`src/TimeGPT.ipynb`](src/TimeGPT.ipynb).
 
 ---
 
@@ -129,7 +131,8 @@ projekt2/
 │   └── nikita
 │   └── christina
 ├── src/
-└── comparative_forecasting.ipynb  # Hauptanalyse
+│   ├── comparative_forecasting.ipynb  # Hauptanalyse (klassische Modelle)
+│   └── TimeGPT.ipynb                 # TimeGPT-Analyse (Foundation Model)
 ├── requirements.txt
 └── README.md
 ```
