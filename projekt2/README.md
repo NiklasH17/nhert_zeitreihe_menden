@@ -6,11 +6,11 @@
 
 ## Zwei Welten, ein Rohstoff
 
-![Benzinpreise Vergleich](docs/plots/01_benzinpreise_vergleich.png)
+![Benzinpreise Vergleich](docs/plots_aus_comparative_forecasting/01_benzinpreise_vergleich.png)
 
 Europaeische Kraftstoffpreise schwanken zwischen 2 und 5 USD pro Liter. Indonesien bewegt sich kaum – unter 1 USD, fast eine Gerade. Gleicher Rohstoff, gleicher Weltmarkt, voellig unterschiedliches Preisverhalten.
 
-![Europa vs Indonesien](docs/plots/06_europa_vs_indonesien.png)
+![Europa vs Indonesien](docs/plots_aus_comparative_forecasting/06_europa_vs_indonesien.png)
 
 ---
 
@@ -18,28 +18,28 @@ Europaeische Kraftstoffpreise schwanken zwischen 2 und 5 USD pro Liter. Indonesi
 
 Die Antwort ist nicht Datenqualitaet. Es ist **Marktstruktur**.
 
-| | Europa (DE, FR) | Indonesien |
-|---|---|---|
-| Preisbildung | Marktgetrieben | Staatlich administriert |
-| Subventionen | Niedrig | Hoch |
+|                | Europa (DE, FR)        | Indonesien                      |
+| -------------- | ---------------------- | ------------------------------- |
+| Preisbildung   | Marktgetrieben         | Staatlich administriert         |
+| Subventionen   | Niedrig                | Hoch                            |
 | Preisanpassung | Graduell, marktbasiert | Sprunghaft, politisch gesteuert |
-| Volatilitaet | Hoch | Niedrig |
+| Volatilitaet   | Hoch                   | Niedrig                         |
 
 Deutschland und Frankreich sind Teil des europaeischen Binnenmarkts – Brent-Rohoel, Raffineriemargen und Steuern bestimmen den Endpreis. Preisschocks (Ukraine-Krise 2022) schlagen direkt durch.
 
 Indonesien betreibt ein **staatliches Subventionssystem**: Der Staat begrenzt Preisanpassungen, federt Weltmarktschocks ab und greift aktiv in die Preisbildung ein. Das Ergebnis ist ein fundamental anderes Preisregime – nicht schlechtere Daten, sondern ein anderes oekonomisches System.
 
-![Volatilitaet](docs/plots/04_volatilitaet_vergleich.png)
+![Volatilitaet](docs/plots_aus_comparative_forecasting/04_volatilitaet_vergleich.png)
 
 ---
 
 ## Der gemeinsame Treiber: Brent-Rohoelpreis
 
-![Brent Crude](docs/plots/03_brent_crude.png)
+![Brent Crude](docs/plots_aus_comparative_forecasting/03_brent_crude.png)
 
 Alle drei Laender beziehen denselben Rohstoff vom Weltmarkt. Aber wie stark kommt dieser Preis beim Endverbraucher an?
 
-![Korrelation Heatmaps](docs/plots/05_korrelation_heatmaps.png)
+![Korrelation Heatmaps](docs/plots_aus_comparative_forecasting/05_korrelation_heatmaps.png)
 
 In Europa: **starke Korrelation** zwischen Brent und Benzinpreis – der Marktmechanismus funktioniert. In Indonesien: **schwaehere Korrelation** – die Subventionen brechen die Transmission.
 
@@ -51,27 +51,28 @@ Granger-Kausalitaetstests bestaetigen: Brent verbessert die Prognose des Benzinp
 
 Vier Prognosemodelle treten gegeneinander an – auf einem realistischen **8-Wochen-Horizont**.
 
-| Modell | Typ | Kernidee |
-|---|---|---|
-| **ARIMA** | Univariat | Autokorrelation der differenzierten Reihe |
-| **VAR** | Multivariat | Gemeinsame Dynamik von Benzin, Diesel, Brent |
-| **State Space (UCM)** | Strukturell | Zerlegung in Trend, Zyklus, Stoerung |
-| **TimeGPT** | Foundation Model | Zero-Shot Forecasting (Nixtla API) |
+| Modell                | Typ              | Kernidee                                     |
+| --------------------- | ---------------- | -------------------------------------------- |
+| **ARIMA**             | Univariat        | Autokorrelation der differenzierten Reihe    |
+| **VAR**               | Multivariat      | Gemeinsame Dynamik von Benzin, Diesel, Brent |
+| **State Space (UCM)** | Strukturell      | Zerlegung in Trend, Zyklus, Stoerung         |
+| **TimeGPT**           | Foundation Model | Zero-Shot Forecasting (Nixtla API)           |
 
 ### Ergebnis
 
-![Modell Ranking](docs/plots/08_modell_ranking_rmse.png)
+![Modell Ranking](docs/plots_aus_comparative_forecasting/08_modell_ranking_rmse.png)
 
-![MAPE Vergleich](docs/plots/09_mape_vergleich.png)
+![MAPE Vergleich](docs/plots_aus_comparative_forecasting/09_mape_vergleich.png)
 
 **Was faellt auf:**
+
 - In Europa gewinnt **VAR** – die multivariate Information (Brent, Diesel) hilft, weil der Marktmechanismus funktioniert.
 - In Indonesien gewinnt **State Space** – ein strukturelles Modell, das den stabilen Trend besser abbildet als volatile Marktmodelle.
 - ARIMA ist ueberall solide, aber selten das beste Modell.
 
 ### Prognose vs. Realitaet
 
-![Forecast Vergleich](docs/plots/10_forecast_vergleich.png)
+![Forecast Vergleich](docs/plots_aus_comparative_forecasting/10_forecast_vergleich.png)
 
 ---
 
@@ -79,13 +80,13 @@ Vier Prognosemodelle treten gegeneinander an – auf einem realistischen **8-Woc
 
 Die ehrliche Antwort: **Es kommt darauf an.**
 
-| | Klassisch (ARIMA, VAR, UCM) | AI (TimeGPT) |
-|---|---|---|
-| Interpretierbarkeit | Hoch – man versteht, was das Modell tut | Black Box |
-| Setup | Feature-Engineering noetig | Plug & Play |
-| Performance (Kurzfrist) | Oft konkurrenzfaehig | Oft aehnlich |
-| Kosten | Kostenlos | API-Kosten |
-| Reproduzierbarkeit | Deterministisch | API-abhaengig |
+|                         | Klassisch (ARIMA, VAR, UCM)             | AI (TimeGPT)  |
+| ----------------------- | --------------------------------------- | ------------- |
+| Interpretierbarkeit     | Hoch – man versteht, was das Modell tut | Black Box     |
+| Setup                   | Feature-Engineering noetig              | Plug & Play   |
+| Performance (Kurzfrist) | Oft konkurrenzfaehig                    | Oft aehnlich  |
+| Kosten                  | Kostenlos                               | API-Kosten    |
+| Reproduzierbarkeit      | Deterministisch                         | API-abhaengig |
 
 Foundation Models sind nicht automatisch ueberlegen. Bei stabilen, gut verstandenen Zeitreihen – wie subventionierten Kraftstoffpreisen – koennen klassische Modelle gleichwertige Ergebnisse liefern, mit dem Vorteil vollstaendiger Interpretierbarkeit.
 
@@ -119,9 +120,16 @@ projekt2/
 │   ├── raw/                    # Originaldaten
 │   └── processed/              # Aufbereitete Laenderdaten
 ├── docs/
-│   └── plots/                  # Exportierte Visualisierungen
+│   └──france
+│   └──germany
+│   └──indonesia
+│   └── plots_aus_comparative_forecasting/                  # Exportierte Visualisierungen
 ├── notebooks/
-│   └── comparative_forecasting.ipynb  # Hauptanalyse
+│   └── niklas
+│   └── nikita
+│   └── christina
+├── src/
+└── comparative_forecasting.ipynb  # Hauptanalyse
 ├── requirements.txt
 └── README.md
 ```
