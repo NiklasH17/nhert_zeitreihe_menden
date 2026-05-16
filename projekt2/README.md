@@ -160,23 +160,6 @@ Der faire Vergleich ist **TimeGPT Basis/Fine-Tuned vs. VAR** – und dort gewinn
 
 ---
 
-## Projektstruktur
-
-```
-projekt2/
-├── data/
-│   ├── raw/                               # Originaldaten
-│   └── processed/                         # Aufbereitete Länderdaten
-├── docs/
-│   ├── plots_aus_comparative_forecasting/ # Plots klassische Modelle
-│   └── plots_aus_timegpt/                 # Plots TimeGPT
-├── notebooks/                             # Explorative Notebooks
-├── src/
-│   ├── comparative_forecasting.ipynb      # Hauptanalyse (ARIMA, VAR, State Space)
-│   └── TimeGPT.ipynb                     # TimeGPT-Analyse (Foundation Model)
-├── requirements.txt
-└── README.md
-```
 
 ## Setup
 
