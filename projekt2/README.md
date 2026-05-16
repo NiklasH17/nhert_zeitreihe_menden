@@ -17,15 +17,15 @@ Europa schwankt zwischen 2 und 5 USD pro Liter. Indonesien bewegt sich kaum – 
 | Preisbildung   | Marktgetrieben         | Staatlich administriert         |
 | Subventionen   | Niedrig                | Hoch                            |
 | Preisanpassung | Graduell, marktbasiert | Sprunghaft, politisch gesteuert |
-| Volatilitaet   | Hoch                   | Niedrig                         |
+| Volatilität    | Hoch                   | Niedrig                         |
 
-Deutschland und Frankreich sind im europaeischen Binnenmarkt – Brent-Rohoel, Raffineriemargen und Steuern bestimmen den Endpreis. Preisschocks wie die russische Invasion der Ukraine 2022 schlagen direkt durch. Indonesien betreibt ein **staatliches Subventionssystem**: Der Staat federt Weltmarktschocks ab. Das ist kein schlechtes Datenset – es ist ein anderes ökonomisches System.
+Deutschland und Frankreich sind im europäischen Binnenmarkt – Brent-Rohöl, Raffineriemargen und Steuern bestimmen den Endpreis. Preisschocks wie die russische Invasion der Ukraine 2022 schlagen direkt durch. Indonesien betreibt ein **staatliches Subventionssystem**: Der Staat federt Weltmarktschocks ab. Das ist kein schlechtes Datenset – es ist ein anderes ökonomisches System.
 
-![Volatilitaet](docs/plots_aus_comparative_forecasting/04_volatilitaet_vergleich.png)
+![Volatilität](docs/plots_aus_comparative_forecasting/04_volatilitaet_vergleich.png)
 
 ---
 
-## Der gemeinsame Treiber: Brent-Rohoelpreis
+## Der gemeinsame Treiber: Brent-Rohölpreis
 
 ![Brent Crude](docs/plots_aus_comparative_forecasting/03_brent_crude.png)
 
@@ -39,7 +39,7 @@ In Europa: **starke Korrelation** zwischen Brent und Benzinpreis. In Indonesien:
 
 ## Unser Modell: VAR (Vektorautoregression)
 
-Wir haben vier Modelle systematisch verglichen – ARIMA, VAR, State Space und TimeGPT. Das Ziel: **ein Modell fuer alle drei Zeitreihen**.
+Wir haben vier Modelle systematisch verglichen – ARIMA, VAR, State Space und TimeGPT. Das Ziel: **ein Modell für alle drei Zeitreihen**.
 
 **VAR gewinnt.** Es modelliert Benzin, Diesel und Brent gemeinsam als System und nutzt die multivariate Information am besten.
 
@@ -55,7 +55,7 @@ Wir haben vier Modelle systematisch verglichen – ARIMA, VAR, State Space und T
 
 *RMSE auf 8-Wochen-Horizont. Niedrigere Werte = bessere Prognose.*
 
-VAR hat den **niedrigsten durchschnittlichen RMSE ueber alle drei Laender**. In Europa gewinnt es klar, in Indonesien liegt es nur minimal hinter State Space (0.054 vs. 0.052 – eine Differenz von 0.002).
+VAR hat den **niedrigsten durchschnittlichen RMSE über alle drei Länder**. In Europa gewinnt es klar, in Indonesien liegt es nur minimal hinter State Space (0.054 vs. 0.052 – eine Differenz von 0.002).
 
 ![Modell Ranking](docs/plots_aus_comparative_forecasting/08_modell_ranking_rmse.png)
 
@@ -90,9 +90,9 @@ VAR hat den **niedrigsten durchschnittlichen RMSE ueber alle drei Laender**. In 
 | **VAR** | 0.0540 | 0.0484 | 4.59% |
 | TimeGPT FT(50) | 0.0615 | 0.0550 | 5.20% |
 
-In Indonesien liegt VAR knapp hinter State Space – aber der Unterschied ist minimal. Fuer ein **einheitliches Modell ueber alle Maerkte** ist VAR die beste Wahl.
+In Indonesien liegt VAR knapp hinter State Space – aber der Unterschied ist minimal. Für ein **einheitliches Modell über alle Märkte** ist VAR die beste Wahl.
 
-### Prognose vs. Realitaet
+### Prognose vs. Realität
 
 ![Forecast Vergleich](docs/plots_aus_comparative_forecasting/10_forecast_vergleich.png)
 
@@ -113,9 +113,9 @@ Zusätzlich zu den klassischen Modellen testen wir **TimeGPT** (Nixtla) – ein 
 
 *RMSE auf 8-Wochen-Horizont.*
 
-**TimeGPT + Exogene** zeigt extrem niedrige Fehler – allerdings verwendet diese Variante die **tatsaechlichen zukuenftigen Brent- und Dieselpreise** als Input. In einem realen Szenario waeren diese Werte nicht bekannt. VAR hingegen prognostiziert alle Variablen gemeinsam, ohne zukuenftige Werte zu kennen.
+**TimeGPT + Exogene** zeigt extrem niedrige Fehler – allerdings verwendet diese Variante die **tatsächlichen zukünftigen Brent- und Dieselpreise** als Input. In einem realen Szenario wären diese Werte nicht bekannt. VAR hingegen prognostiziert alle Variablen gemeinsam, ohne zukünftige Werte zu kennen.
 
-Der faire Vergleich ist **TimeGPT Basis/Fine-Tuned vs. VAR** – und dort gewinnt VAR in allen drei Laendern.
+Der faire Vergleich ist **TimeGPT Basis/Fine-Tuned vs. VAR** – und dort gewinnt VAR in allen drei Ländern.
 
 ![TimeGPT Konfidenzintervalle](docs/plots_aus_timegpt/01_timegpt_konfidenzintervalle.png)
 
@@ -127,7 +127,7 @@ Der faire Vergleich ist **TimeGPT Basis/Fine-Tuned vs. VAR** – und dort gewinn
 | ------- | -------- |
 | **Forecasting at Scale** | Alle 3 Länder gleichzeitig, ohne separates Training |
 | **Uncertainty Quantification** | Konfidenzintervalle passen sich automatisch an die Volatilität an |
-| **Cross-Validation** | Ergebnisse ueber 3 Zeitfenster stabil (Durchschnitt: DE 0.16, FR 0.15, ID 0.03) |
+| **Cross-Validation** | Ergebnisse über 3 Zeitfenster stabil (Durchschnitt: DE 0.16, FR 0.15, ID 0.03) |
 | **Anomaly Detection** | Erkennt 15 Anomalien – Europa clustert um russische Invasion der Ukraine 2022 |
 
 ![TimeGPT Anomalien](docs/plots_aus_timegpt/05_timegpt_anomalien.png)
@@ -137,26 +137,26 @@ Der faire Vergleich ist **TimeGPT Basis/Fine-Tuned vs. VAR** – und dort gewinn
 |                         | Klassisch (VAR)                         | AI (TimeGPT)  |
 | ----------------------- | --------------------------------------- | ------------- |
 | Interpretierbarkeit     | Hoch – man versteht, was das Modell tut | Black Box     |
-| Setup                   | Feature-Engineering noetig              | Plug & Play   |
+| Setup                   | Feature-Engineering nötig               | Plug & Play   |
 | Performance (Kurzfrist) | **Besser**                              | Schlechter    |
 | Kosten                  | Kostenlos                               | API-Kosten    |
-| Reproduzierbarkeit      | Deterministisch                         | API-abhaengig |
+| Reproduzierbarkeit      | Deterministisch                         | API-abhängig  |
 
 ---
 
 ## Fazit
 
-1. **VAR ist das beste Modell fuer alle drei Zeitreihen** – niedrigster durchschnittlicher RMSE (0.1765), gewinnt Europa klar und liegt in Indonesien nur 0.002 hinter State Space.
+1. **VAR ist das beste Modell für alle drei Zeitreihen** – niedrigster durchschnittlicher RMSE (0.1765), gewinnt Europa klar und liegt in Indonesien nur 0.002 hinter State Space.
 2. **Marktstruktur bestimmt das Prognoseverhalten** – Indonesien ist nicht schwieriger zu prognostizieren, es funktioniert anders.
-3. **Europaeische Integration ist messbar** – Deutschland und Frankreich verhalten sich prognostisch nahezu identisch (MAPE 3.96% vs. 4.30%).
-4. **TimeGPT ist konkurrenzfaehig, aber nicht ueberlegen** – klassische Modelle liefern bessere Ergebnisse bei voller Interpretierbarkeit.
-5. **8 Wochen sind der richtige Horizont** – laengere Prognosen verlieren bei allen Modellen rapide an Genauigkeit.
+3. **Europäische Integration ist messbar** – Deutschland und Frankreich verhalten sich prognostisch nahezu identisch (MAPE 3.96% vs. 4.30%).
+4. **TimeGPT ist konkurrenzfähig, aber nicht überlegen** – klassische Modelle liefern bessere Ergebnisse bei voller Interpretierbarkeit.
+5. **8 Wochen sind der richtige Horizont** – längere Prognosen verlieren bei allen Modellen rapide an Genauigkeit.
 
 ### Limitationen
 
-- USD-normierte Preise – lokale Waehrungseffekte nicht beruecksichtigt
+- USD-normierte Preise – lokale Währungseffekte nicht berücksichtigt
 - Kein Out-of-Sample Backtesting (rollende Evaluation)
-- Begrenzte exogene Variablen (keine Geopolitik, Lagerbestaende, Raffinerie-Auslastung)
+- Begrenzte exogene Variablen (keine Geopolitik, Lagerbestände, Raffinerie-Auslastung)
 
 ---
 
@@ -166,7 +166,7 @@ Der faire Vergleich ist **TimeGPT Basis/Fine-Tuned vs. VAR** – und dort gewinn
 projekt2/
 ├── data/
 │   ├── raw/                               # Originaldaten
-│   └── processed/                         # Aufbereitete Laenderdaten
+│   └── processed/                         # Aufbereitete Länderdaten
 ├── docs/
 │   ├── plots_aus_comparative_forecasting/ # Plots klassische Modelle
 │   └── plots_aus_timegpt/                 # Plots TimeGPT
