@@ -1,4 +1,4 @@
-# Kraftstoffpreise: Warum sich Europa und Indonesien voellig anders verhalten
+# Kraftstoffpreise: Warum sich Europa und Indonesien völlig anders verhalten
 
 **Wöchentliche Zeitreihenanalyse (2020–2026) | Deutschland, Frankreich, Indonesien**
 
@@ -8,7 +8,7 @@
 
 ![Benzinpreise Vergleich](docs/plots_aus_comparative_forecasting/01_benzinpreise_vergleich.png)
 
-Europa schwankt zwischen 2 und 5 USD pro Liter. Indonesien bewegt sich kaum – unter 1 USD, fast eine Gerade. Gleicher Rohstoff, gleicher Weltmarkt, voellig unterschiedliches Preisverhalten. Warum?
+Europa schwankt zwischen 2 und 5 USD pro Liter. Indonesien bewegt sich kaum – unter 1 USD, fast eine Gerade. Gleicher Rohstoff, gleicher Weltmarkt, völlig unterschiedliches Preisverhalten. Warum?
 
 ![Europa vs Indonesien](docs/plots_aus_comparative_forecasting/06_europa_vs_indonesien.png)
 
@@ -19,7 +19,7 @@ Europa schwankt zwischen 2 und 5 USD pro Liter. Indonesien bewegt sich kaum – 
 | Preisanpassung | Graduell, marktbasiert | Sprunghaft, politisch gesteuert |
 | Volatilitaet   | Hoch                   | Niedrig                         |
 
-Deutschland und Frankreich sind im europaeischen Binnenmarkt – Brent-Rohoel, Raffineriemargen und Steuern bestimmen den Endpreis. Preisschocks wie die Ukraine-Krise 2022 schlagen direkt durch. Indonesien betreibt ein **staatliches Subventionssystem**: Der Staat federt Weltmarktschocks ab. Das ist kein schlechtes Datenset – es ist ein anderes oekonomisches System.
+Deutschland und Frankreich sind im europaeischen Binnenmarkt – Brent-Rohoel, Raffineriemargen und Steuern bestimmen den Endpreis. Preisschocks wie die Russische Angriff 2022 schlagen direkt durch. Indonesien betreibt ein **staatliches Subventionssystem**: Der Staat federt Weltmarktschocks ab. Das ist kein schlechtes Datenset – es ist ein anderes ökonomisches System.
 
 ![Volatilitaet](docs/plots_aus_comparative_forecasting/04_volatilitaet_vergleich.png)
 
@@ -29,11 +29,11 @@ Deutschland und Frankreich sind im europaeischen Binnenmarkt – Brent-Rohoel, R
 
 ![Brent Crude](docs/plots_aus_comparative_forecasting/03_brent_crude.png)
 
-Alle drei Laender beziehen denselben Rohstoff. Aber wie stark kommt der Weltmarktpreis beim Verbraucher an?
+Alle drei Länder beziehen denselben Rohstoff. Aber wie stark kommt der Weltmarktpreis beim Verbraucher an?
 
 ![Korrelation Heatmaps](docs/plots_aus_comparative_forecasting/05_korrelation_heatmaps.png)
 
-In Europa: **starke Korrelation** zwischen Brent und Benzinpreis. In Indonesien: **schwach** – die Subventionen brechen die Transmission. Granger-Kausalitaetstests bestaetigen: Brent verbessert die Prognose in allen drei Laendern signifikant, aber der Effekt ist in Europa deutlich staerker.
+In Europa: **starke Korrelation** zwischen Brent und Benzinpreis. In Indonesien: **schwach** – die Subventionen brechen die Transmission. Granger-Kausalitätstests bestätigen: Brent verbessert die Prognose in allen drei Ländern signifikant, aber der Effekt ist in Europa deutlich stärker.
 
 ---
 
@@ -43,8 +43,8 @@ Drei klassische Modelle prognostizieren den Benzinpreis 8 Wochen voraus:
 
 | Modell                | Typ         | Kernidee                                     |
 | --------------------- | ----------- | -------------------------------------------- |
-| **ARIMA**             | Univariat   | Autokorrelation der differenzierten Reihe    |
-| **VAR**               | Multivariat | Gemeinsame Dynamik von Benzin, Diesel, Brent |
+| **ARIMA**             | Univariät   | Autokorrelation der differenzierten Reihe    |
+| **VAR**               | Multivariät | Gemeinsame Dynamik von Benzin, Diesel, Brent |
 | **State Space (UCM)** | Strukturell | Zerlegung in Trend, Zyklus, Stoerung         |
 
 ### Ergebnisse: Wer prognostiziert am besten?
@@ -87,18 +87,18 @@ Drei klassische Modelle prognostizieren den Benzinpreis 8 Wochen voraus:
 
 ## TimeGPT: Foundation Model im Vergleich
 
-Zusaetzlich zu den klassischen Modellen testen wir **TimeGPT** (Nixtla) – ein vortrainiertes Foundation Model, das ohne manuelles Training prognostiziert (Zero-Shot Forecasting).
+Zusätzlich zu den klassischen Modellen testen wir **TimeGPT** (Nixtla) – ein vortrainiertes Foundation Model, das ohne manuelles Training prognostiziert (Zero-Shot Forecasting).
 
-Die vollstaendige TimeGPT-Analyse deckt ab:
+Die vollständige TimeGPT-Analyse deckt ab:
 
 | Feature                      | Ergebnis                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------ |
-| **Forecasting at Scale**     | Alle 3 Laender gleichzeitig, ohne separates Training                     |
-| **Uncertainty Quantification** | Konfidenzintervalle passen sich automatisch an die Volatilitaet an     |
-| **Exogenous Variables**      | Brent und Diesel als zusaetzliche Informationsquellen                    |
+| **Forecasting at Scale**     | Alle 3 Länder gleichzeitig, ohne separates Training                     |
+| **Uncertainty Quantification** | Konfidenzintervalle passen sich automatisch an die Volatilität an     |
+| **Exogenous Variables**      | Brent und Diesel als zusätzliche Informationsquellen                    |
 | **Cross-Validation**         | Ergebnisse ueber 3 Zeitfenster hinweg stabil                            |
-| **Fine-Tuning**              | Anpassung an domaenenspezifische Muster (10 und 50 Steps)               |
-| **Anomaly Detection**        | Erkennt automatisch ungewoehnliche Preisbewegungen (z.B. Ukraine-Krise) |
+| **Fine-Tuning**              | Anpassung an domänenspezifische Muster (10 und 50 Steps)               |
+| **Anomaly Detection**        | Erkennt automatisch ungewöhnliche Preisbewegungen (z.B. Russischen Angriff) |
 
 ![TimeGPT Konfidenzintervalle](docs/plots_aus_timegpt/01_timegpt_konfidenzintervalle.png)
 
@@ -114,11 +114,11 @@ Die vollstaendige TimeGPT-Analyse deckt ab:
 | ----------------------- | --------------------------------------- | ------------- |
 | Interpretierbarkeit     | Hoch – man versteht, was das Modell tut | Black Box     |
 | Setup                   | Feature-Engineering noetig              | Plug & Play   |
-| Performance (Kurzfrist) | Oft konkurrenzfaehig                    | Oft aehnlich  |
+| Performance (Kurzfrist) | Oft konkurrenzfähig                     | Oft ähnlich   |
 | Kosten                  | Kostenlos                               | API-Kosten    |
-| Reproduzierbarkeit      | Deterministisch                         | API-abhaengig |
+| Reproduzierbarkeit      | Deterministisch                         | API-abhängig |
 
-Foundation Models sind nicht automatisch ueberlegen. Bei stabilen, gut verstandenen Zeitreihen koennen klassische Modelle gleichwertige Ergebnisse liefern – mit dem Vorteil vollstaendiger Interpretierbarkeit.
+Foundation Models sind nicht automatisch überlegen. Bei stabilen, gut verstandenen Zeitreihen können klassische Modelle gleichwertige Ergebnisse liefern – mit dem Vorteil vollstaendiger Interpretierbarkeit.
 
 ---
 
@@ -138,23 +138,6 @@ Foundation Models sind nicht automatisch ueberlegen. Bei stabilen, gut verstande
 
 ---
 
-## Projektstruktur
-
-```
-projekt2/
-├── data/
-│   ├── raw/                               # Originaldaten
-│   └── processed/                         # Aufbereitete Laenderdaten
-├── docs/
-│   ├── plots_aus_comparative_forecasting/ # Plots klassische Modelle
-│   └── plots_aus_timegpt/                 # Plots TimeGPT
-├── notebooks/                             # Explorative Notebooks
-├── src/
-│   ├── comparative_forecasting.ipynb      # Hauptanalyse (ARIMA, VAR, State Space)
-│   └── TimeGPT.ipynb                     # TimeGPT-Analyse (Foundation Model)
-├── requirements.txt
-└── README.md
-```
 
 ## Setup
 
