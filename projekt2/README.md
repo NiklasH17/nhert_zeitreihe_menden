@@ -19,7 +19,7 @@ Europa schwankt zwischen 2 und 5 USD pro Liter. Indonesien bewegt sich kaum – 
 | Preisanpassung | Graduell, marktbasiert | Sprunghaft, politisch gesteuert |
 | Volatilitaet   | Hoch                   | Niedrig                         |
 
-Deutschland und Frankreich sind im europaeischen Binnenmarkt – Brent-Rohoel, Raffineriemargen und Steuern bestimmen den Endpreis. Preisschocks wie die Russische Angriff 2022 schlagen direkt durch. Indonesien betreibt ein **staatliches Subventionssystem**: Der Staat federt Weltmarktschocks ab. Das ist kein schlechtes Datenset – es ist ein anderes ökonomisches System.
+Deutschland und Frankreich sind im europaeischen Binnenmarkt – Brent-Rohoel, Raffineriemargen und Steuern bestimmen den Endpreis. Preisschocks wie die russische Invasion der Ukraine 2022 schlagen direkt durch. Indonesien betreibt ein **staatliches Subventionssystem**: Der Staat federt Weltmarktschocks ab. Das ist kein schlechtes Datenset – es ist ein anderes ökonomisches System.
 
 ![Volatilitaet](docs/plots_aus_comparative_forecasting/04_volatilitaet_vergleich.png)
 
@@ -128,7 +128,7 @@ Der faire Vergleich ist **TimeGPT Basis/Fine-Tuned vs. VAR** – und dort gewinn
 | **Forecasting at Scale** | Alle 3 Länder gleichzeitig, ohne separates Training |
 | **Uncertainty Quantification** | Konfidenzintervalle passen sich automatisch an die Volatilität an |
 | **Cross-Validation** | Ergebnisse ueber 3 Zeitfenster stabil (Durchschnitt: DE 0.16, FR 0.15, ID 0.03) |
-| **Anomaly Detection** | Erkennt 15 Anomalien – Europa clustert um Russische Angriff 2022 |
+| **Anomaly Detection** | Erkennt 15 Anomalien – Europa clustert um russische Invasion der Ukraine 2022 |
 
 ![TimeGPT Anomalien](docs/plots_aus_timegpt/05_timegpt_anomalien.png)
 
